@@ -1,2 +1,4 @@
 # StockTool
-Show stock in taskbar
+Show stock in taskbar.
+
+![screenshot](screenshot.jpg)

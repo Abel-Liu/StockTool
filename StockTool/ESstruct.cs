@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace StockTool
@@ -12,6 +9,21 @@ namespace StockTool
         public static string StockCode = "sh000001";
 
         public static int SleepSeconds = 5;
+
+        static GlobalInfo()
+        {
+            var settings = File.ReadAllLines("config");
+
+            try
+            {
+                StockCode = settings[0];
+                SleepSeconds = int.Parse(settings[1]);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
     }
 
     /// <summary>

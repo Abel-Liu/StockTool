@@ -28,8 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labPrice = new System.Windows.Forms.Label();
             this.labRate = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labPrice
@@ -39,9 +43,9 @@
             this.labPrice.ForeColor = System.Drawing.Color.Red;
             this.labPrice.Location = new System.Drawing.Point(2, -3);
             this.labPrice.Name = "labPrice";
-            this.labPrice.Size = new System.Drawing.Size(143, 34);
+            this.labPrice.Size = new System.Drawing.Size(127, 34);
             this.labPrice.TabIndex = 0;
-            this.labPrice.Text = "00000.00";
+            this.labPrice.Text = "0000.00";
             // 
             // labRate
             // 
@@ -54,21 +58,34 @@
             this.labRate.TabIndex = 1;
             this.labRate.Text = "-0.00%";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ExitToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Text = "Exit";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // StartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(153, 47);
+            this.ClientSize = new System.Drawing.Size(130, 47);
             this.Controls.Add(this.labRate);
             this.Controls.Add(this.labPrice);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StartForm";
             this.Text = "StartForm";
-            this.TransparencyKey = System.Drawing.SystemColors.Desktop;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StartForm_FormClosing);
             this.Load += new System.EventHandler(this.StartForm_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,5 +95,7 @@
 
         private System.Windows.Forms.Label labPrice;
         private System.Windows.Forms.Label labRate;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
     }
 }
