@@ -6,23 +6,19 @@ namespace StockTool
 {
     public static class GlobalInfo
     {
-        public static string StockCode = "sh000001";
-
-        public static int SleepSeconds = 5;
-
-        static GlobalInfo()
+        public static Config ReadConfig()
         {
-            var settings = File.ReadAllLines("config");
-
-            try
+            if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config")))
             {
-                StockCode = settings[0];
-                SleepSeconds = int.Parse(settings[1]);
+                return Config.FromJson(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config")));
             }
-            catch (Exception e)
-            {
+            else
+                return null;
+        }
 
-            }
+        public static void SaveConfig(Config config)
+        {
+            File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config"), config.ToJson());
         }
     }
 
