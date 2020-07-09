@@ -115,6 +115,10 @@ namespace StockTool
             var url = "http://hq.sinajs.cn/list=" + config.StockCode;
             var html = httpClient.GetStringAsync(url).Result;
             var vars = html.Substring(html.IndexOf("=")).Trim('"').Split(',');
+            if (vars.Length<4)
+            {
+                return;
+            }
             var nowPrice = float.Parse(vars[3]);
             var lastPrice = float.Parse(vars[2]);
             var up = (nowPrice - lastPrice) / lastPrice * 100;
