@@ -74,6 +74,12 @@ namespace StockTool
 
                     switch (taskbarInfo.uEdge)
                     {
+                        case 2:
+                            pos.X =0;
+                            pos.Y = rcBar.Bottom - rcBar.Top - this.Height;
+                            pos.Width = rcBar.Right - rcBar.Left;
+                            pos.Height =  this.Height;
+                            break;
                         case 3://任务栏在下边
                             pos.X = rcBar.Right - rcBar.Left - this.Width;
                             pos.Y = 0;
@@ -115,6 +121,10 @@ namespace StockTool
             var url = "http://hq.sinajs.cn/list=" + config.StockCode;
             var html = httpClient.GetStringAsync(url).Result;
             var vars = html.Substring(html.IndexOf("=")).Trim('"').Split(',');
+            if (vars.Length<4)
+            {
+                return;
+            }
             var nowPrice = float.Parse(vars[3]);
             var lastPrice = float.Parse(vars[2]);
             var up = (nowPrice - lastPrice) / lastPrice * 100;
